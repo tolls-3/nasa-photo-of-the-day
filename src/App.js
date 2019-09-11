@@ -22,11 +22,12 @@ function App() {
         updateNasaDate(response.data.date);
         updateNasaExp(response.data.explanation);
         updateNasaTitle(response.data.title);
-
-        // debugger;
+        // debugger;      
       })
 
       .catch(error => {
+        alert(`GET ${nasaApi} 403 (Forbidden)`);
+        
       });
   }, []); 
 
