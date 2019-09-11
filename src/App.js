@@ -22,16 +22,13 @@ function App() {
         updateNasaDate(response.data.date);
         updateNasaExp(response.data.explanation);
         updateNasaTitle(response.data.title);
+
+        // debugger;
       })
 
       .catch(error => {
       });
   }, []); 
-
-
-
-
-
 
   return (
     <div className="App">
@@ -40,11 +37,19 @@ function App() {
         app! Have fun 🚀!
       </p>
 
-      <h1>Hello there</h1>
-      <Date date={nasaDate}/>
-      <NPOD source={nasaImg}/>
-      <Title title ={nasaTitle}/>
-      <Explanation exp={nasaExp}/>
+      <div>
+        <h1>Hello there</h1>
+        {
+          !nasaImg ? <h3>Loading...</h3>:
+        <div>
+          <Date date={nasaDate}/>
+          <NPOD source={nasaImg}/>
+          <Title title ={nasaTitle}/>
+          <Explanation exp={nasaExp}/>
+        </div>
+        }
+      </div>
+    
       
     </div>    
   
@@ -52,3 +57,11 @@ function App() {
 }
 
 export default App;
+
+
+// if (!props.photoOfTheDay) return <h3>Loading...</h3>;
+
+// // Display your component as normal after the data has been fetched
+// return (
+//   {* your normal JSX here *}
+// );
