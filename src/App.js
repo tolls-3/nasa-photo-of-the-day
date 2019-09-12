@@ -28,9 +28,6 @@ const StyledAppDisplay = styled.div`
 
 function App() {
 
-  
-// const nasaApi = `https://api.nasa.gov/planetary/apod?api_key=D7LVDgUPtRo7ViFBwSqBdO0eZpnjKoFmTrQiwMPW&date=${dateState}`;
-
   const today = new Date().toISOString().substr(0,10);
 
   const [dateState, setDateState] = useState(today);
@@ -39,32 +36,13 @@ function App() {
     setDateState(e.target.value);
   }
   const [infos, setInfos] = useState({
-    // Image: [],
-    // Date: [],
-    // Title: [],
-    // Explanation: []
   });
-  // const [nasaImg,updateNasaImg]= useState('');
-  // const [nasaDate,updateNasaDate]=useState('');s
-  // const [nasaExp,updateNasaExp]=useState('');
-  // const [nasaTitle,updateNasaTitle]=useState('');
 
   useEffect(() =>{
   axios.get(`https://api.nasa.gov/planetary/apod?api_key=D7LVDgUPtRo7ViFBwSqBdO0eZpnjKoFmTrQiwMPW&date=${dateState}`)
       .then(res => {
 
         setInfos(res.data)
-          // Image: res.data.url,
-          // Date: res.data.date,
-          // Title: res.data.title,
-          // Explanation: res.data.explanation
-       
-
-        // updateNasaImg(response.data.url);
-        // updateNasaDate(response.data.date);
-        // updateNasaExp(response.data.explanation);
-        // updateNasaTitle(response.data.title);
-        // debugger;      
       })
 
       .catch(error => {
@@ -84,18 +62,19 @@ function App() {
         <div>
            <h1>Hello there</h1>
         </div>
+
         
-        
-          {/* // !source ? <h3>Loading...</h3>: */}
+        {
+        !infos ? <h3>Loading...</h3>:
         <section>
           <Dated today={dateState} handleChange={handleChange}/>
           <NPOD source={infos} />
           <Title title ={infos}/>
           <Explanation exp={infos}/>
         </section>
-        
+        }
       </div>
-    
+       
       
     </StyledAppDisplay>    
   
@@ -105,9 +84,3 @@ function App() {
 export default App;
 
 
-// if (!props.photoOfTheDay) return <h3>Loading...</h3>;
-
-// // Display your component as normal after the data has been fetched
-// return (
-//   {* your normal JSX here *}
-// );
