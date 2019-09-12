@@ -4,7 +4,7 @@ function Title(props) {
     const {title} = props;
     return (
         <>
-        <h2>{title} </h2>
+        <h2>{title.title} </h2>
         </>
     )
     

@@ -1,11 +1,16 @@
 import React from "react";
 
 function Date(props) {
-    const {date} = props;
+    const {today, handleChange} = props;
     return (
-        <>
-        <h2>{date} </h2>
-        </>
+        <div>
+        <input
+        onChange={handleChange}
+        value={today}
+        type='date'
+        max={today}
+        />
+        </div>
     )
     
     }

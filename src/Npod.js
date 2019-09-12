@@ -4,7 +4,7 @@ function NPOD(props) {
     const {source} = props;
     return (
         <>
-        <img src= {source} alt="Nasa POD for the day!"/>   
+        <img src= {source.url} alt="Nasa POD for the day!"/>   
         </>
     )
     
